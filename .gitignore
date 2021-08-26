@@ -1,0 +1,10 @@
+.idea*
+notebook*
+./tf_pose/*
+./docker/*
+./etcs/*
+./images/*
+./launch/*
+./models/*
+./msg/*
+./scripts/*

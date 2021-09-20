@@ -1,7 +1,7 @@
 # git clone --recursive https://github.com/hamataro0710/kempo-motion-analysis.git
 apt-get install swig
 apt-get install ffmpeg
-cd kempo-motion-analysis/
+cd test2/
 mv tf-pose-estimation/* .
 # cd tf_pose_estimation
 pip install -r requirements.txt

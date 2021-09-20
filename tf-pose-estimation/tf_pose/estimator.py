@@ -13,8 +13,6 @@ from tf_pose.common import CocoPart
 from tf_pose.tensblur.smoother import Smoother
 from tensorflow.python.compiler.tensorrt import trt_convert as trt
 
-tf.compat.v1.disable_eager_execution（）
-
 try:
     from tf_pose.pafprocess import pafprocess
 except ModuleNotFoundError as e:

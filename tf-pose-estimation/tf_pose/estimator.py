@@ -6,6 +6,7 @@ import slidingwindow as sw
 import cv2
 import numpy as np
 import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
 import time
 
 from tf_pose import common

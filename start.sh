@@ -2,6 +2,7 @@
 apt-get install swig
 apt-get install ffmpeg
 cd test2/test2/
+ls
 mv tf-pose-estimation/* .
 # cd tf_pose_estimation
 pip install -r requirements.txt

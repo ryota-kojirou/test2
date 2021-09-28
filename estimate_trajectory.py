@@ -139,7 +139,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             plt.figure(figsize=(int(w_pxl / fig_resize), int(h_pxl / fig_resize)))
             if not showBG:
                 image = np.zeros(image.shape)
-            image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
+#             image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
 
             plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
             if cog != 'skip':
@@ -149,6 +149,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                 plt.vlines(bodies_cog[:, 7, 0] * w_pxl, ymin=0, ymax=h_pxl, linestyles='dashed')
 
             # plot trajectories r_wrist:4, l_wrist:7
+　　　　　　　　　　　　　　　　　　　　　　　　# 多分ここで軌跡を描いている
             for hum in np.sort(humans_id):
                 df_human = np_humans[np_humans[:, clm_of_id] == hum]
                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize)

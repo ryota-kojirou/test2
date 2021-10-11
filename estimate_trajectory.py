@@ -151,10 +151,26 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             # plot trajectories r_wrist:4, l_wrist:7
             for hum in np.sort(humans_id):
                 df_human = np_humans[np_humans[:, clm_of_id] == hum]
-                df_human_x = df_human[:, 1 * 3 + 1] * w_pxl
-                df_human_y = df_human[:, 1 * 3 + 2] * h_pxl
-                print(df_human_x[-1], df_human_y[-1])
-                plt.plot(df_human[:, 1 * 3 + 1] * w_pxl, df_human[:, 1 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
+                r_start_x = df_human[:, 2 * 3 + 1] * w_pxl
+                r_start_y = df_human[:, 2 * 3 + 2] * h_pxl
+                r_mid_x = df_human[:, 3 * 3 + 1] * w_pxl
+                r_mid_y = df_human[:, 3 * 3 + 2] * h_pxl
+                r_end_x = df_human[:, 4 * 3 + 1] * w_pxl
+                r_end_y = df_human[:, 4 * 3 + 2] * h_pxl
+                r_x_list = [df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 3 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 1] * w_pxl]
+                r_y_list = [df_human[:, 2 * 3 + 2] * h_pxl, df_human[:, 3 * 3 + 2] * h_pxl, df_human[:, 4 * 3 + 2] * h_pxl]
+                
+                l_start_x = df_human[:, 5 * 3 + 1] * w_pxl
+                l_start_y = df_human[:, 5 * 3 + 2] * h_pxl
+                l_mid_x = df_human[:, 6 * 3 + 1] * w_pxl
+                l_mid_y = df_human[:, 6 * 3 + 2] * h_pxl
+                l_end_x = df_human[:, 7 * 3 + 1] * w_pxl
+                l_end_y = df_human[:, 7 * 3 + 2] * h_pxl
+                r_x_list = [df_human[:, 5 * 3 + 1] * w_pxl, df_human[:, 6 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 1] * w_pxl]
+                r_y_list = [df_human[:, 5 * 3 + 2] * h_pxl, df_human[:, 6 * 3 + 2] * h_pxl, df_human[:, 7 * 3 + 2] * h_pxl]
+                
+                print(df_human[:, 2 * 3 + 1][-1] * w_pxl)
+                plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
 #                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
 #                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
 

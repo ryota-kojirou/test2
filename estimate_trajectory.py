@@ -154,7 +154,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                 for i in range(2):
                   hand_x = []
                   hand_y = []
-                  for n in range(2):
+                  for n in range(3):
                     x = df_human[:, (i*3+n+2) * 3 + 1][-1] * w_pxl
                     y = df_human[:, (i*3+n+2) * 3 + 2][-1] * h_pxl
                     hand_x.append(x)

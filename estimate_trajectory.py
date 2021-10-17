@@ -151,15 +151,17 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             # plot trajectories r_wrist:4, l_wrist:7
             for hum in np.sort(humans_id):
                 df_human = np_humans[np_humans[:, clm_of_id] == hum]
-                for i in range(2):
-                  hand_x = []
-                  hand_y = []
-                  for n in range(3):
-                    x = df_human[:, (i*3+n+2) * 3 + 1][-1] * w_pxl
-                    y = df_human[:, (i*3+n+2) * 3 + 2][-1] * h_pxl
-                    hand_x.append(x)
-                    hand_y.append(y)
-                  plt.plot(hand_x, hand_y, linewidth=400/fig_resize)
+                for c in range(-3, -1):
+                  for i in range(2):
+                    hand_x = []
+                    hand_y = []
+                    for n in range(3):
+                      if df_human[:, (i*3+n+2) * 3 + 1].length > 2:
+                        x = df_human[:, (i*3+n+2) * 3 + 1][c] * w_pxl
+                        y = df_human[:, (i*3+n+2) * 3 + 2][c] * h_pxl
+                        hand_x.append(x)
+                        hand_y.append(y)
+                    plt.plot(hand_x, hand_y, linewidth=400/fig_resize)
                   
 #                 plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
 #                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize)

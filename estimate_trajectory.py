@@ -156,9 +156,9 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                     hand_x = []
                     hand_y = []
                     for n in range(3):
-                      if len(df_human[:, (i*3+n+2) * 3 + 1]) > 2:
-                        x = df_human[:, (i*3+n+2) * 3 + 1][c] * w_pxl
-                        y = df_human[:, (i*3+n+2) * 3 + 2][c] * h_pxl
+                      if len(df_human[:, (i*3+n+2) * 3 + 1]) > 5:
+                        x = df_human[:, (i*3+n+2) * 3 + 1][c*2] * w_pxl
+                        y = df_human[:, (i*3+n+2) * 3 + 2][c*2] * h_pxl
                         hand_x.append(x)
                         hand_y.append(y)
                     plt.plot(hand_x, hand_y, linewidth=400/fig_resize, alpha=(1+c/5), color = 'forestgreen')

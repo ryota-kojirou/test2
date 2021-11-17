@@ -166,6 +166,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
 #                 plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
+                plt.plot(0,0,humans_id)
 
             plt.ylim(h_pxl, 0)
 

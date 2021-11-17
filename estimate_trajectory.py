@@ -167,6 +167,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
                 plt.text(400,400,str(count))
+                count = count+1
 
             plt.ylim(h_pxl, 0)
 
@@ -176,7 +177,6 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                                      video.split('.')[-2] + '{:06d}'.format(frame_no) + ".png"))
             plt.close()
             plt.clf()
-            count = count+1
 
         # before increment, renew some args
         frame_no += 1

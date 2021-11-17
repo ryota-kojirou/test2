@@ -17,7 +17,7 @@ from modules.motion_analysis import MotionAnalysis
 from modules.track_humans import track_humans
 
 fps_time = 0
-
+count = 0
 
 # if __name__ == '__main__':
 def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_out_ratio=4.0, orientation='horizontal',
@@ -166,7 +166,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
 #                 plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
-                plt.text(400,400,str(i))
+                plt.text(400,400,str(count))
 
             plt.ylim(h_pxl, 0)
 
@@ -176,6 +176,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                                      video.split('.')[-2] + '{:06d}'.format(frame_no) + ".png"))
             plt.close()
             plt.clf()
+            count = count+1
 
         # before increment, renew some args
         frame_no += 1

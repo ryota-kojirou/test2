@@ -17,7 +17,6 @@ from modules.motion_analysis import MotionAnalysis
 from modules.track_humans import track_humans
 
 fps_time = 0
-count = 0
 
 # if __name__ == '__main__':
 def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_out_ratio=4.0, orientation='horizontal',
@@ -81,6 +80,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
 
     # processing video
     frame_no = 0
+    count = 0
     while cap.isOpened():
         ret_val, image = cap.read()
         if not ret_val:

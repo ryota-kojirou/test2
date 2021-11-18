@@ -151,21 +151,20 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             # plot trajectories r_wrist:4, l_wrist:7
             for i, hum in enumerate(np.sort(humans_id)):
                 df_human = np_humans[np_humans[:, clm_of_id] == hum]
-#                 for c in range(-25, 0):
-#                   for i in range(2):
-#                     hand_x = []
-#                     hand_y = []
-#                     for n in range(3):
-#                       if len(df_human[:, (i*3+n+2) * 3 + 1]) > 25:
-#                         x = df_human[:, (i*3+n+2) * 3 + 1][c] * w_pxl
-#                         y = df_human[:, (i*3+n+2) * 3 + 2][c] * h_pxl
-#                         hand_x.append(x)
-#                         hand_y.append(y)
-#                     plt.plot(hand_x, hand_y, linewidth=400/fig_resize, alpha=(1+c/5), color = 'forestgreen')
-                  
-#                 plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
-                plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
-                plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize)
+                if count<200:
+                  plt.plot(df_human[:, 1 * 3 + 1] * w_pxl, df_human[:, 1 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                  plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                  plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                elif count<300:
+                  plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                  plt.plot(df_human[:, 5 * 3 + 1] * w_pxl, df_human[:, 5 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                else:
+                  plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                  plt.plot(df_human[:, 5 * 3 + 1] * w_pxl, df_human[:, 5 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                  plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+                  plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+#                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
+#                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.3)
                 plt.text(400,400,str(count))
                 count = count+1
 

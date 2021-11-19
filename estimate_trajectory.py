@@ -151,6 +151,9 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             # plot trajectories r_wrist:4, l_wrist:7
             for i, hum in enumerate(np.sort(humans_id)):
                 df_human = np_humans[np_humans[:, clm_of_id] == hum]
+                if len(df_human)>15:
+                  num = len(df_human)-15
+                  del df_human[:num]
                 if count<200:
                   print(df_human)
                   print("\n")

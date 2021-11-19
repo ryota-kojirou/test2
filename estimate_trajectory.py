@@ -152,7 +152,9 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             for i, hum in enumerate(np.sort(humans_id)):
                 df_human = np_humans[np_humans[:, clm_of_id] == hum]
                 if count<200:
-                  print(len(df_human[:, 1 * 3 + 1]))
+                  print(df_human)
+                  print("\n")
+                  print(df_human[:, 1 * 3 + 1])
                   plt.plot(df_human[:, 1 * 3 + 1] * w_pxl, df_human[:, 1 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="green")
                   plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="green")
                   plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="green")

@@ -154,7 +154,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                 if len(df_human)>15:
                   num = len(df_human)-15
                   df_human = df_human[num:]
-                for i in len(df_human[:, 4 * 3 + 1]):
+                for i in range(len(df_human[:, 4 * 3 + 1])):
                   plt.plot(df_human[:, 4 * 3 + 1][i] * w_pxl, df_human[:, 4 * 3 + 2][i] * h_pxl, linewidth=400/fig_resize, alpha=0.2+(i/14)*0.5, color="darkorange")
                   plt.plot(df_human[:, 7 * 3 + 1][i] * w_pxl, df_human[:, 7 * 3 + 2][i] * h_pxl, linewidth=400/fig_resize, alpha=0.2+(i/14)*0.5, color="darkorange")
                   print(0.2+(i/14)*0.5)

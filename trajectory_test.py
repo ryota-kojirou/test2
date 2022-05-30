@@ -417,14 +417,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                 if len(df_human)>15:
                   num = len(df_human)-15
                   df_human = df_human[num:]
-                  
-                  # spline
-                  x = df_human[:, 4 * 3 + 1] * w_pxl
-                  y = df_human[:, 4 * 3 + 2] * h_pxl
-                  spline = Spline(x, y)
-                  rx = np.arange(0, w_pxl, 0.01)
-                  ry = [spline.calc(i) for i in rx]
-                  
+
 #                 df_human[:, 4 * 3 + 1] = df_human[:, 4 * 3 + 1] * w_pxl
 #                 df_human[:, 7 * 3 + 1] = df_human[:, 7 * 3 + 1] * w_pxl  
 #                 df_human[:, 4 * 3 + 2] = df_human[:, 4 * 3 + 2] * h_pxl
@@ -432,6 +425,12 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
 #                 for n in range(len(df_human[:, 4 * 3 + 1])-1):
 #                   plt.plot([df_human[:, 4 * 3 + 1][n], df_human[:, 4 * 3 + 1][n+1]], [df_human[:, 4 * 3 + 2][n], df_human[:, 4 * 3 + 2][n+1]], linewidth=400/fig_resize, alpha=0.6, color="darkorange")
 #                   plt.plot([df_human[:, 7 * 3 + 1][n], df_human[:, 7 * 3 + 1][n+1]], [df_human[:, 7 * 3 + 2][n], df_human[:, 7 * 3 + 2][n+1]], linewidth=400/fig_resize, alpha=0.2+(n/14)*0.5, color="darkorange")
+                # spline
+                x = df_human[:, 4 * 3 + 1] * w_pxl
+                y = df_human[:, 4 * 3 + 2] * h_pxl
+                spline = Spline(x, y)
+                rx = np.arange(0, w_pxl, 0.01)
+                ry = [spline.calc(i) for i in rx]
                 plt.plot(rx, ry, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
 #                 if count<200:

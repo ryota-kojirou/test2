@@ -429,6 +429,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                 if len(df_human)>1:
                   x = df_human[:, 4 * 3 + 1] * w_pxl
                   y = df_human[:, 4 * 3 + 2] * h_pxl
+                  print(x, y)
                   spline = Spline(x, y)
                   rx = np.arange(0, w_pxl, 0.01)
                   ry = [spline.calc(i) for i in rx]

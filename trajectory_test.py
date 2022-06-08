@@ -35,6 +35,8 @@ class Spline:
 
         self.nx = len(x)  # dimension of x
         h = np.diff(x)
+        for i in h:
+            print(i)
 
         # calc coefficient c
         self.a = [iy for iy in y]

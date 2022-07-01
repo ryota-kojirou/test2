@@ -178,10 +178,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
                   x = df_human[:, 4 * 3 + 1] * w_pxl
                   y = df_human[:, 4 * 3 + 2] * h_pxl
                   print(x, y)
-                  spline = Spline(x, y)
-                  rx = np.arange(0, w_pxl, 0.01)
-                  ry = [spline.calc(i) for i in rx]
-                  plt.plot(rx, ry, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
+                  plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
                   plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
 #                 if count<200:
 # #                   print(df_human)

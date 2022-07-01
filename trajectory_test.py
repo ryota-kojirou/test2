@@ -169,12 +169,12 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
 #                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
             plt.close()
             plt.clf()
-        print("aaaaa", len(df_human))
         # before increment, renew some args
         frame_no += 1
         gc.collect()
         if cv2.waitKey(1) == 27:
             break
+    print("aaaaa", len(df_human))
     cv2.destroyAllWindows()
     logger.info("finish estimation & start encoding")
     cmd = ["ffmpeg", "-r", str(caps_fps), "-start_number", str(start_frame),

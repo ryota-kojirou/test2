@@ -128,7 +128,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             np_humans_current = np.concatenate((np.c_[np.repeat(frame_no, len(a_humans))],
                                              a_humans.reshape(a_humans.shape[0], a_humans.shape[1] * a_humans.shape[2]),
                                              np.c_[humans_id]), axis=1)
-            np_humans = np.concatenate((np_humans[np_humans[:, 0] > (frame_no - 30)], np_humans_current))
+            np_humans = np.concatenate((np_humans, np_humans_current))
         post_humans = a_humans
 
         # calculate center of gravity

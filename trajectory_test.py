@@ -163,47 +163,11 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
             for i, hum in enumerate(np.sort(humans_id)):
                 df_human = np_humans[np_humans[:, clm_of_id] == hum]
                 print(len(df_human))
-                if len(df_human)>15:
-                  num = len(df_human)-15
-                  df_human = df_human[num:]
-#                 df_human[:, 4 * 3 + 1] = df_human[:, 4 * 3 + 1] * w_pxl
-#                 df_human[:, 7 * 3 + 1] = df_human[:, 7 * 3 + 1] * w_pxl  
-#                 df_human[:, 4 * 3 + 2] = df_human[:, 4 * 3 + 2] * h_pxl
-#                 df_human[:, 7 * 3 + 2] = df_human[:, 7 * 3 + 2] * h_pxl
-#                 for n in range(len(df_human[:, 4 * 3 + 1])-1):
-#                   plt.plot([df_human[:, 4 * 3 + 1][n], df_human[:, 4 * 3 + 1][n+1]], [df_human[:, 4 * 3 + 2][n], df_human[:, 4 * 3 + 2][n+1]], linewidth=400/fig_resize, alpha=0.6, color="darkorange")
-#                   plt.plot([df_human[:, 7 * 3 + 1][n], df_human[:, 7 * 3 + 1][n+1]], [df_human[:, 7 * 3 + 2][n], df_human[:, 7 * 3 + 2][n+1]], linewidth=400/fig_resize, alpha=0.2+(n/14)*0.5, color="darkorange")
-                # spline
-                if len(df_human)>1:
-                  x = df_human[:, 4 * 3 + 1] * w_pxl
-                  y = df_human[:, 4 * 3 + 2] * h_pxl
-                  print(x, y)
-                  plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
-                  plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
-#                 if count<200:
-# #                   print(df_human)
-# #                   print("\n")
-# #                   print(df_human[:, 1 * 3 + 1])
-#                   plt.plot(df_human[:, 1 * 3 + 1] * w_pxl, df_human[:, 1 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                   plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                   plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                 elif count<300:
-#                   plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                   plt.plot(df_human[:, 5 * 3 + 1] * w_pxl, df_human[:, 5 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                 else:
-#                   plt.plot(df_human[:, 2 * 3 + 1] * w_pxl, df_human[:, 2 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                   plt.plot(df_human[:, 5 * 3 + 1] * w_pxl, df_human[:, 5 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                   plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                   plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.7, color="darkorange")
-#                 plt.text(400,400,str(count))
-#                 count = count+1
-
-            plt.ylim(h_pxl, 0)
-
-            # bgimg = cv2.cvtColor(image.astype(np.uint8), cv2.COLOR_BGR2RGB)
-            # bgimg = cv2.resize(bgimg, (e.heatMat.shape[1], e.heatMat.shape[0]), interpolation=cv2.INTER_AREA)
-            plt.savefig(os.path.join(path_png_estimated,
-                                     video.split('.')[-2] + '{:06d}'.format(frame_no) + ".png"))
+                x = df_human[:, 4 * 3 + 1] * w_pxl
+                y = df_human[:, 4 * 3 + 2] * h_pxl
+#                 plt.plot(df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
+#                 plt.plot(df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl, linewidth=400/fig_resize, alpha=0.6, color="darkorange")
+            print("aaaaa", len(df_human))
             plt.close()
             plt.clf()
 

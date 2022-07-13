@@ -18,14 +18,6 @@ from modules.track_humans import track_humans
 
 fps_time = 0
 
-# spline
-
-
-
-
-
-# spline end
-
 
 
 
@@ -174,12 +166,6 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
         if cv2.waitKey(1) == 27:
             break
             
-    import csv
-    out_data = [df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl]
-　　　　　　　　csv_data = open('write_test.csv', 'w')
-　　　　　　　　test = csv.writer(out_data)
-　　　　　　　　test.writerows()
-　　　　　　　　csv_data.close()
     cv2.destroyAllWindows()
     logger.info("finish estimation & start encoding")
     cmd = ["ffmpeg", "-r", str(caps_fps), "-start_number", str(start_frame),
@@ -188,7 +174,12 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
            os.path.join(path_movie_out, video.split('.')[-2] + "_track.mp4")]
     subprocess.call(cmd)
     logger.debug('finished+')
-
+    import csv
+    out_data = [df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl]
+　　　　　　　　csv_data = open('write_test.csv', 'w')
+　　　　　　　　test = csv.writer(out_data)
+　　　　　　　　test.writerows()
+　　　　　　　　csv_data.close()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='tf-pose-estimation Video')

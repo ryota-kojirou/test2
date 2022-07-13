@@ -167,7 +167,7 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
         if cv2.waitKey(1) == 27:
             break
     out_data = [df_human[:, 4 * 3 + 1] * w_pxl, df_human[:, 4 * 3 + 2] * h_pxl, df_human[:, 7 * 3 + 1] * w_pxl, df_human[:, 7 * 3 + 2] * h_pxl]
-　　　　　　　　csv_data = open('../drive/My Drive/data/write_test.csv', 'w')
+    csv_data = open('../drive/My Drive/data/write_test.csv', 'w')
 　　　　　　　　test = csv.writer(out_data)
 　　　　　　　　test.writerows()
 　　　　　　　　csv_data.close()        

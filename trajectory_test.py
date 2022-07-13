@@ -165,7 +165,6 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
         gc.collect()
         if cv2.waitKey(1) == 27:
             break
-    import os
     cwd = os.getcwd()
     print(cwd)
 #     import csv

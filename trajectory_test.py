@@ -173,12 +173,13 @@ def estimate_trajectory(video, path='', resize='432x368', model='cmu', resize_ou
     csv_data.close()
     cv2.destroyAllWindows()
     logger.info("finish estimation & start encoding")
-    cmd = ["ffmpeg", "-r", str(caps_fps), "-start_number", str(start_frame),
-           "-i", os.path.join(path_png_estimated, video.split('.')[-2] + "%06d.png"),
-           "-vcodec", "libx264", "-pix_fmt", "yuv420p",
-           os.path.join(path_movie_out, video.split('.')[-2] + "_track.mp4")]
-    subprocess.call(cmd)
-    logger.debug('finished+')
+    println("done")
+#     cmd = ["ffmpeg", "-r", str(caps_fps), "-start_number", str(start_frame),
+#            "-i", os.path.join(path_png_estimated, video.split('.')[-2] + "%06d.png"),
+#            "-vcodec", "libx264", "-pix_fmt", "yuv420p",
+#            os.path.join(path_movie_out, video.split('.')[-2] + "_track.mp4")]
+#     subprocess.call(cmd)
+#     logger.debug('finished+')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='tf-pose-estimation Video')
